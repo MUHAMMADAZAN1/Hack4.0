@@ -18,3 +18,16 @@ int main(){
     printf("Enter a number of year untile retirement:");
     scanf("%i",&retirementYear);
     month=retirementYear*12;
+     adjustInflationReturnRate = ((1 + annualReturn )/(1 + annualInflation)) - 1;
+    printf("|month|\t|Interset   |\t|Balance             |\n");
+    for(int i = 1; i<=month; i++){
+        interest=(adjustInflationReturnRate*initialAmount)/12;
+        initialAmount+= interest + monthlyContributionAmount;
+        totalInterestEarned = totalInterestEarned + interest;
+        printf("|%5i|\t|$ %10.2f|\t|& %10.2f   |\n",i,interest,initialAmount); 
+    }
+    printf("__________________________________________________\n");
+    printf("Total interest Earned = $ %f\n",totalInterestEarned);
+    printf("Total Nest Egg : $ %f\n",initialAmount);
+    return 0;   
+}
